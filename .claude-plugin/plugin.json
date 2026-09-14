@@ -1,0 +1,5 @@
+{
+  "name": "acsl-skills",
+  "description": "Deductive verification of C with Frama-C/WP: writing ACSL specifications, running and triaging proofs, designing provable C, and writing Coq when nothing else closes the goal.",
+  "version": "1.0.0"
+}

@@ -1,0 +1,3 @@
+.frama-c/
+.wp-session/
+*.log

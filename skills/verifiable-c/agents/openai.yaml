@@ -1,0 +1,4 @@
+interface:
+  display_name: "Verifiable C"
+  short_description: "Write C that Frama-C/WP can prove"
+  default_prompt: "Use $verifiable-c to judge whether this C can be verified, and how to reshape it."

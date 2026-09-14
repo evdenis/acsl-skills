@@ -1,0 +1,53 @@
+/* Shared logic header. Included from .h/.c inside annotations, so the run needs -pp-annot
+   or the include silently does nothing.
+
+   House style: plain recursive `logic`/`predicate` plus named `lemma`s.
+   No `axiomatic` blocks, no `inductive` predicates -- WP does not check axiom consistency. */
+
+#ifndef EXAMPLE_ACSL_INCLUDED
+#define EXAMPLE_ACSL_INCLUDED
+
+#include "typedefs.h"
+
+/*@
+  // Recursive definition. Signature uses ACSL `integer`, never C `int`.
+  logic integer
+  Count(value_type* a, integer m, integer n, value_type v) =
+    n <= m ? 0 : Count(a, m, n-1, v) + (a[n-1] == v ? 1 : 0);
+
+  // Overload defaulting m = 0.
+  logic integer
+  Count(value_type* a, integer n, value_type v) = Count(a, 0, n, v);
+
+  // Two-state predicate: K is the earlier state, L the later one.
+  predicate Unchanged{K,L}(value_type* a, integer m, integer n) =
+    \forall integer i; m <= i < n ==> \at(a[i],K) == \at(a[i],L);
+
+  // The algebraic toolkit. Naming: Predicate_Property.
+  // SMT solvers unroll recursive definitions and time out; these lemmas are what
+  // makes the difference. State the base case, the one-step cases, and the splits.
+
+  lemma Count_Empty:
+    \forall value_type *a, v, integer m, n;
+      n <= m ==> Count(a, m, n, v) == 0;
+
+  lemma Count_Hit:
+    \forall value_type *a, v, integer m, n;
+      m < n ==> a[n-1] == v ==> Count(a, m, n, v) == Count(a, m, n-1, v) + 1;
+
+  lemma Count_Miss:
+    \forall value_type *a, v, integer m, n;
+      m < n ==> a[n-1] != v ==> Count(a, m, n, v) == Count(a, m, n-1, v);
+
+  lemma Count_Union:
+    \forall value_type *a, v, integer k, m, n;
+      0 <= k <= m <= n ==>
+      Count(a, k, n, v) == Count(a, k, m, v) + Count(a, m, n, v);
+
+  lemma Count_Unchanged{K,L}:
+    \forall value_type *a, v, integer m, n;
+      Unchanged{K,L}(a, m, n) ==>
+      Count{K}(a, m, n, v) == Count{L}(a, m, n, v);
+*/
+
+#endif /* EXAMPLE_ACSL_INCLUDED */

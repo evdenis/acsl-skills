@@ -1,0 +1,4 @@
+interface:
+  display_name: "WP Coq"
+  short_description: "Hand-written Coq proofs for WP goals"
+  default_prompt: "Use $wp-coq to write a Coq proof for this WP goal."

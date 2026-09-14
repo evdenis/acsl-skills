@@ -1,0 +1,4 @@
+interface:
+  display_name: "ACSL Spec"
+  short_description: "Write and repair ACSL annotations"
+  default_prompt: "Use $acsl-spec to write ACSL contracts and loop invariants for this function."

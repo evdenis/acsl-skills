@@ -1,0 +1,4 @@
+interface:
+  display_name: "Frama-C WP"
+  short_description: "Run WP and triage failing proof goals"
+  default_prompt: "Use $frama-c-wp to run WP on this file and explain the failing goals."

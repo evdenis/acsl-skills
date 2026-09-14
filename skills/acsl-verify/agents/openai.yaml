@@ -1,0 +1,4 @@
+interface:
+  display_name: "ACSL Verify"
+  short_description: "Prove C with Frama-C/WP, end to end"
+  default_prompt: "Use $acsl-verify to specify and prove this C file with Frama-C/WP."
